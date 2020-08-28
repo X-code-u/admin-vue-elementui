@@ -22,11 +22,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 //element-ui的全部组件
 //element-ui的css
+//团队开发单独拉取，不要全局注册ElementUI
+// import './plugins/element'
 _vue["default"].use(_elementUi["default"]); //使用elementUI
 
 
 //配置请求的根路径
-_axios["default"].defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/';
+_axios["default"].defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'; //请求拦截
+
+_axios["default"].interceptors.request.use(function (config) {
+  //为请求头对象，添加Authorization字段保存token
+  config.headers.Authorization = window.sessionStorage.getItem('token'); //不论如何使用都要返回config，拦截后不返回，其他地方不能取到数据会出错
+
+  return config;
+});
+
 _vue["default"].prototype.$http = _axios["default"];
 _vue["default"].config.productionTip = false;
 new _vue["default"]({

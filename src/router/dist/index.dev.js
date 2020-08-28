@@ -13,6 +13,10 @@ var _login = _interopRequireDefault(require("../views/login.vue"));
 
 var _home = _interopRequireDefault(require("../views/home.vue"));
 
+var _welcome = _interopRequireDefault(require("../views/welcome.vue"));
+
+var _user = _interopRequireDefault(require("../views/user/user.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 _vue["default"].use(_vueRouter["default"]);
@@ -25,7 +29,15 @@ var routes = [{
   component: _login["default"]
 }, {
   path: '/home',
-  component: _home["default"]
+  component: _home["default"],
+  redirect: '/welcome',
+  children: [{
+    path: '/welcome',
+    component: _welcome["default"]
+  }, {
+    path: '/users',
+    component: _user["default"]
+  }]
 }];
 var router = new _vueRouter["default"]({
   mode: 'history',
