@@ -17,6 +17,10 @@ var _welcome = _interopRequireDefault(require("../views/welcome.vue"));
 
 var _user = _interopRequireDefault(require("../views/user/user.vue"));
 
+var _rights = _interopRequireDefault(require("../views/power/rights.vue"));
+
+var _roles = _interopRequireDefault(require("../views/power/roles.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 _vue["default"].use(_vueRouter["default"]);
@@ -37,6 +41,12 @@ var routes = [{
   }, {
     path: '/users',
     component: _user["default"]
+  }, {
+    path: '/rights',
+    component: _rights["default"]
+  }, {
+    path: '/roles',
+    component: _roles["default"]
   }]
 }];
 var router = new _vueRouter["default"]({
