@@ -9,6 +9,8 @@ import Roles from '../views/power/roles.vue'
 
 import Cate from '../views/goods/cate.vue'
 import Params from '../views/goods/params.vue'
+import List from '../views/goods/list.vue'
+import Add from '../views/goods/add.vue'
 
 
 
@@ -51,6 +53,14 @@ Vue.use(VueRouter)
       {
         path: '/params',
         component: Params
+      },
+      {
+        path: '/goods',
+        component: List
+      },
+      {
+        path: '/goods/add',
+        component: Add
       }
     ]
   }
