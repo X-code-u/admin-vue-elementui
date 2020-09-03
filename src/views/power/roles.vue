@@ -15,7 +15,7 @@
         </el-col>
       </el-row>
       <!-- 角色列表 -->
-      <el-table :data="roleList" border stripe>
+      <el-table :data="roleList"  border stripe>
         <!-- 展开具体权限 -->
         <el-table-column type="expand">
           <template slot-scope="scope">
@@ -34,7 +34,7 @@
                     <i class="el-icon-caret-right"></i>
                   </el-col>
                   <el-col :span="18">
-                    <el-tag type="warning" v-for="(item3, i3) in item2.children" :key="item3.id" closable @close="removeRightById(scope.row, item3.id)">{{item3.authName}}</el-tag>
+                    <el-tag type="warning" v-for="item3 in item2.children" :key="item3.id" closable @close="removeRightById(scope.row, item3.id)">{{item3.authName}}</el-tag>
                   </el-col>
                 </el-row>
               </el-col>
@@ -116,6 +116,7 @@
 export default {
   data() {
     return {
+      rowkey: '',
       // 所有角色列表数据
       roleList: [],
       //所有权限列表
